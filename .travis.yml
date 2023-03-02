@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before-install:
+  - docker build -t phong/docker-react -f dockerfile.dev .
+  
+script:
+  - docker run -e CI=true phong/docker-react npm run test -- --coverage
